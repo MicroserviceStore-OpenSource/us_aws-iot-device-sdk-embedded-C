@@ -10,6 +10,12 @@
     <Filter Include="Microservice">
       <UniqueIdentifier>{70043346-112f-4801-9acc-6659698e0fa9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Microservice\aws-iot-sdk">
+      <UniqueIdentifier>{a584be4e-f53e-42c9-b3c8-028d10e6163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Microservice\mbedtls">
+      <UniqueIdentifier>{c2dbcbfd-3bc9-41e6-ba58-f3386dfe22fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainForm.cpp" />
@@ -18,6 +24,264 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\CPU\x86\uServicePackage\Simulation\WinForm\SysCallSimulator.c">
       <Filter>Simulator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\aws-iot-device-sdk-embedded-C\libraries\standard\coreMQTT\source\core_mqtt.c">
+      <Filter>Microservice\aws-iot-sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\aws-iot-device-sdk-embedded-C\libraries\standard\coreMQTT\source\core_mqtt_serializer.c">
+      <Filter>Microservice\aws-iot-sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\aws-iot-device-sdk-embedded-C\libraries\standard\coreMQTT\source\core_mqtt_state.c">
+      <Filter>Microservice\aws-iot-sdk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\xtea.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509write_csr.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509write_crt.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509_csr.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509_crt.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509_crl.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509_create.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\x509.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\version_features.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\version.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\timing.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\threading.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_tls13_keys.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_tls.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_ticket.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_srv.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_msg.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_cookie.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_cli.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_ciphersuites.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ssl_cache.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\sha512.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\sha256.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\sha1.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\rsa_internal.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\rsa.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ripemd160.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\poly1305.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\platform_util.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\platform.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pkwrite.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pkparse.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pkcs5.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pkcs12.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pkcs11.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pk_wrap.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pk.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\pem.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\padlock.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\oid.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\nist_kw.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\net_sockets.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\mps_trace.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\mps_reader.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\memory_buffer_alloc.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\md5.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\md4.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\md2.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\md.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\hmac_drbg.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\hkdf.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\havege.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\gcm.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\error.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\entropy_poll.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\entropy.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ecp_curves.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ecp.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ecjpake.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ecdsa.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ecdh.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\dhm.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\des.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\debug.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ctr_drbg.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\constant_time.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\cmac.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\cipher_wrap.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\cipher.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\chachapoly.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\chacha20.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\certs.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\ccm.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\camellia.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\blowfish.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\bignum.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\base64.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\asn1write.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\asn1parse.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\aria.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\arc4.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\aesni.c">
+      <Filter>Microservice\mbedtls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\Libs\mbedtls\library\aes.c">
+      <Filter>Microservice\mbedtls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
