@@ -8,11 +8,7 @@
 
 /********************************* INCLUDES ***********************************/
 
-#ifdef US_AI_GENERATED
-#include "us_public_headers.inc"
-#else /* US_AI_GENERATED */
-#include "us-Template.h"
-#endif /* US_AI_GENERATED */
+#include "us-AWSIoT.h"
 
 #include "us_Internal.h"
 
@@ -53,38 +49,73 @@ SysStatus INITIALISE_FUNCTION(USERVICE_NAME_NONSTR)(void)
     return uService_Initialise(usUID, &userLibSettings.execIndex);
 }
 
-/*
- * User Lib Implementation of Each Operation defined in usOperations
- *  - AI Generated ("us_userlib.inc" below)
- *  - or, Manually Add Cases for each operation below
- */
-#ifdef US_AI_GENERATED
-#include "us_userlib.inc"
-#else /* US_AI_GENERATED */
-SysStatus us_Template_Sum(int32_t a, int32_t b, int32_t* result, usStatus* usStatus)
+SysStatus us_AWSIoT_Connect(char host[AWS_HOST_NAME_MAX_LEN], char thingName[AWS_THING_NAME_MAX_LEN], uint32_t deviceCertHandle, uint32_t privateKeyHandle, uint32_t timeoutInMs, AWSIoTContext* ctx, usStatus* result)
 {
-    const uint32_t timeoutInMs = 2000;
     SysStatus retVal;
 
     usResponsePackage response;
     usRequestPackage request;
 
+    // Prepare the package
     {
-        request.header.operation = usOp_Sum;
+        request.header.operation = usOp_Connect;
         request.header.length = sizeof(request);
-        request.payload.sum.a = a;
-        request.payload.sum.b = b;
-    };
+        memcpy(request.payload.connect.hostName, host, AWS_HOST_NAME_MAX_LEN);
+        memcpy(request.payload.connect.thingName, thingName, AWS_THING_NAME_MAX_LEN);
+        request.payload.connect.deviceCertHandle = deviceCertHandle;
+        request.payload.connect.privateKeyHandle = privateKeyHandle;
+    }
 
     retVal = uService_RequestBlocker(userLibSettings.execIndex, (uServicePackage*)&request, (uServicePackage*)&response, timeoutInMs);
-    *usStatus = response.header.status;
+    *result = response.header.status;
 
-    if (*usStatus == usStatus_Success)
+    if (retVal == SysStatus_Success && *result == usStatus_Success)
     {
-        *result = response.payload.sum.result;
+        ctx->ctx = response.payload.connect.ctx;
     }
 
     return retVal;
 }
 
-#endif
+SysStatus us_AWSIoT_SubscribeToTopic(AWSIoTContext* ctx, char topicName[AWS_TOPIC_MAX_LEN], uint32_t timeoutInMs, usStatus* result)
+{
+    SysStatus retVal;
+
+    usResponsePackage response;
+    usRequestPackage request;
+
+    // Prepare the package
+    {
+        request.header.operation = usOp_SubscribeToTopic;
+        request.header.length = sizeof(request);
+        memcpy(request.payload.subscribeToTopic.topicName, topicName, AWS_TOPIC_MAX_LEN);
+        request.payload.subscribeToTopic.ctx = ctx->ctx;
+    }
+
+    retVal = uService_RequestBlocker(userLibSettings.execIndex, (uServicePackage*)&request, (uServicePackage*)&response, timeoutInMs);
+    *result = response.header.status;
+
+    return retVal;
+}
+
+SysStatus us_AWSIoT_PublishToTopic(AWSIoTContext* ctx, char topicName[AWS_TOPIC_MAX_LEN], char payload[AWS_PUBLISH_DATA_MAX_LEN], uint32_t timeoutInMs, usStatus* result)
+{
+    SysStatus retVal;
+
+    usResponsePackage response;
+    usRequestPackage request;
+
+    // Prepare the package
+    {
+        request.header.operation = usOp_PublishToTopic;
+        request.header.length = sizeof(request);
+        memcpy(request.payload.publishToTopic.topicName, topicName, AWS_TOPIC_MAX_LEN);
+        memcpy(request.payload.publishToTopic.publishData, payload, AWS_PUBLISH_DATA_MAX_LEN);
+        request.payload.publishToTopic.ctx = ctx->ctx;
+    }
+
+    retVal = uService_RequestBlocker(userLibSettings.execIndex, (uServicePackage*)&request, (uServicePackage*)&response, timeoutInMs);
+    *result = response.header.status;
+
+    return retVal;
+}
