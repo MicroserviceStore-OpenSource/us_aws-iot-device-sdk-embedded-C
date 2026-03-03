@@ -1,0 +1,2 @@
+https://github.com/aws/aws-iot-device-sdk-embedded-C.git,da99638
+https://github.com/Mbed-TLS/mbedtls.git,2fc8413
