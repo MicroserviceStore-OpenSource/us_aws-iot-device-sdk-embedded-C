@@ -167,7 +167,7 @@ PRIVATE void startService(void)
         if (!dataReceived || receivedLen == 0)
         {
             /* Sleep until receive an IPC message */
-            Sys_WaitForEvent(SysEvent_IPCMessage);
+            Sys_WaitForEvent(SysEvent_IPCMessage, 0);
 
             continue;
         }
@@ -315,7 +315,7 @@ PRIVATE usStatus checkSessionID(uint8_t senderID, uint32_t sessionIndex)
  * TLS Transport Layer for MQTT
  */
 
-PRIVATE int tls_connect(TLSSession_t* s, const char* host, uint16_t port,
+PRIVATE int aws_tls_connect(TLSSession_t* s, const char* host, uint16_t port,
                         const char* ca, uint32_t deviceCertHandle, uint32_t devicePKeyHandle)
 {
     int32_t rc; (void)rc;
@@ -333,13 +333,13 @@ PRIVATE int tls_connect(TLSSession_t* s, const char* host, uint16_t port,
     return 0;
 }
 
-PRIVATE void tls_disconnect(TLSSession_t* s)
+PRIVATE void aws_tls_disconnect(TLSSession_t* s)
 {
     int32_t rc; (void)rc;
     Sys_TLSClose(*(int32_t*)s->ssl, &rc);
 }
 
-PRIVATE int32_t transport_send(NetworkContext_t* ctx, const void* buf, size_t len)
+PRIVATE int32_t aws_tls_send(NetworkContext_t* ctx, const void* buf, size_t len)
 {
     int32_t rc; (void)rc;
     int32_t writtenLen = 0;
@@ -347,7 +347,7 @@ PRIVATE int32_t transport_send(NetworkContext_t* ctx, const void* buf, size_t le
     return (retVal != SysStatus_Success || writtenLen <= 0) ? -1 : (int32_t)writtenLen;
 }
 
-PRIVATE int32_t transport_recv(NetworkContext_t* ctx, void* buf, size_t len)
+PRIVATE int32_t aws_tls_recv(NetworkContext_t* ctx, void* buf, size_t len)
 {
     int32_t rc; (void)rc;
     int32_t readLen = 0;
@@ -440,7 +440,7 @@ PRIVATE ALWAYS_INLINE SysStatus awsConnect(uint8_t senderID, usRequestPackage* r
     /* Initialise/Connect TLS */
     {
         LOG_AWS("Connecting TLS to %s:%d ...\n", request->payload.connect.hostName, AWS_IOT_PORT);
-        tlsStatus = tls_connect(&thingSession->netCtx.tls,
+        tlsStatus = aws_tls_connect(&thingSession->netCtx.tls,
                                 request->payload.connect.hostName, AWS_IOT_PORT,
                                 AWS_IOT_ROOT_CA, request->payload.connect.deviceCertHandle, request->payload.connect.privateKeyHandle);
         if (tlsStatus != 0)
@@ -455,8 +455,8 @@ PRIVATE ALWAYS_INLINE SysStatus awsConnect(uint8_t senderID, usRequestPackage* r
     {
         TransportInterface_t transport;
         transport.pNetworkContext = &thingSession->netCtx;
-        transport.send = transport_send;
-        transport.recv = transport_recv;
+        transport.send = aws_tls_send;
+        transport.recv = aws_tls_recv;
         transport.writev = NULL;
 
         mqttStatus = MQTT_Init(&thingSession->mqttCtx, &transport, get_time_ms, mqtt_event_cb, &fixedBuf);
@@ -464,7 +464,7 @@ PRIVATE ALWAYS_INLINE SysStatus awsConnect(uint8_t senderID, usRequestPackage* r
         {
             LOG_ERROR("AWS MQTT Init Error : %d", mqttStatus);
             response->header.status = usStatus_AWSMQTTInitError;
-            tls_disconnect(&thingSession->netCtx.tls);
+            aws_tls_disconnect(&thingSession->netCtx.tls);
 
             return SysStatus_Success;
         }
@@ -489,7 +489,7 @@ PRIVATE ALWAYS_INLINE SysStatus awsConnect(uint8_t senderID, usRequestPackage* r
         {
             LOG_ERROR("AWS MQTT Connect Error : %d", mqttStatus);
             response->header.status = usStatus_AWSMQTTConnectError;
-            tls_disconnect(&thingSession->netCtx.tls);
+            aws_tls_disconnect(&thingSession->netCtx.tls);
             return SysStatus_Success;
         }
 
